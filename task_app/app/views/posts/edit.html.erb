@@ -1,0 +1,36 @@
+<div class="edit">
+  <h1>スケジュール</h1>
+</div>
+<% @post.errors.full_messages.each do |message| %>
+  <div class="form-error">
+    <%= message %>
+  </div>
+<% end %>
+<%= form_tag("/posts/#{@post.id}", method: :patch) do %>
+    <table class="edit_table">
+        <tr class="edit_tittle">
+          <th class="table_name">タイトル</th>
+          <th class="table_form"><input value="<%= @post.tittle %>" name="tittle"></th>
+        </tr>
+        <tr class="edit_start">
+          <th class="table_name">開始日</th>
+          <th class="table_form"><input value="<%= @post.start %>" type="date" name="start"></th>
+        </tr>
+        <tr class="edit_stop">
+          <th class="table_name">終了日</th>
+          <th class="table_form"><input value="<%= @post.stop %>" type="date" name="stop"></th></th>
+        </tr>
+        <tr class="edit_detail">
+          <th class="table_name">スケジュール詳細</th>
+          <th class="table_form"><textarea name="detail"><%= @post.detail %></textarea></th>
+        </tr>
+    </table>
+  <div class="btn" >
+    <div class="keep_btn">
+       <input type="submit" value="保存">
+    </div>
+<% end %>
+    <div class="delete_btn">
+       <%= link_to("削除","/posts/#{@post.id}",class: 'link',method: :delete,  data: { confirm: "本当に削除しますか？" }) %>
+    </div>
+  </div>

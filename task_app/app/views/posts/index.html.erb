@@ -1,0 +1,30 @@
+<div class="index_tittle">
+  <h1>スケジュール一覧<h1>
+</div>
+<div class ="index_main">
+   <table>
+      <tr class="table_tittle">
+        <th class ="no">No.</th>
+        <th class ="th_tittle">タイトル</th>
+        <th class = "start">開始日</th>
+        <th class ="stop">終了日</th>
+        <th class="update">スケジュール更新日</th>
+        <th class="detail">詳細</th>
+        <th class="edit">編集</th>
+        <th class="delete">削除</th>
+      </tr>
+      <% @posts.each do |post| %>
+        <tr>
+          <th class ="no"><%= post.id%></th>
+          <th class ="th_tittle"><%= post.tittle %></th>
+          <th class = "start"><%= post.start %></th>
+          <th class ="stop"><%= post.stop %></th>
+          <th class="update"><%= post.updated_at.to_s(:datetime_jp) %></th>
+          <th class="detail"><%= link_to("詳細","/posts/#{post.id}",class: 'link') %>
+          <th class="edit"><%= link_to("編集","/posts/#{post.id}/edit",class: 'link') %></th>
+          <th class="delete"><%= link_to("削除","/posts/#{post.id}",class: 'link',method: :delete, data: { confirm: "本当に削除しますか？" }) %></th>
+        </tr>
+      <% end %>
+    </table>
+</div>
+
