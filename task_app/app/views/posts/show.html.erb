@@ -1,0 +1,30 @@
+<div class="show">
+  <h1>スケジュール</h1>
+</div>
+<table class="show_table">
+    <tr class="show_tittle">
+      <th class="table_name">タイトル</th>
+      <th class="table_form"><%= @post.tittle %></th>
+    </tr>
+    <tr class="show_start">
+      <th class="table_name">開始日</th>
+      <th class="table_form"><%= @post.start %></th>
+    </tr>
+    <tr class="show_stop">
+      <th class="table_name">終了日</th>
+      <th class="table_form"><%= @post.stop %></th></th>
+    </tr>
+    <tr class="show_detail">
+      <th class="table_name">スケジュール詳細</th>
+      <th class="table_form"><%= @post.detail %></th>
+    </tr>
+</table>
+<div class="btn">
+  <div class="edit_btn">
+     <%= link_to("編集","/posts/#{@post.id}/edit",class: 'link') %>
+  </div>
+  <div class="delete_btn">
+     <%= link_to("削除","/posts/#{@post.id}",class: 'link',method: :delete, data: { confirm: "本当に削除しますか？" }) %>
+  </div>
+</div>
+
